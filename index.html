@@ -1,0 +1,281 @@
+<!doctype html>
+
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<title>AJAX/PHP/CURL/JSON example</title>
+		<meta name="description" content="AJAX/PHP/CURL/JSON example">
+        <meta name="author" content="Louise Bennett">
+        <link rel="stylesheet" href="libs/css/styles.css" type="text/css">
+
+	</head>
+
+	<body>
+
+        <table>
+                <thead> 
+                    <tr>
+                        <th>API Name</th>
+                        <th>API Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. Find Nearby Weather</td>
+                        <td>
+                            <p>Please enter Longitude and Latitude Points to find out what the weather is like in this area.</p>
+                            <form action="" method="">
+                                <label for="lng">Longitude:</label>
+                                <input type="number" id="selLng" name="lng"><br><br>
+                                <label for="lat">Latitude:</label>
+                                <input type="number" id="selLat" name="lat"><br><br>
+                            </form>
+                            <td><button id="btnRunNearbyWeather">Submit</button></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2. Find Nearby Points of Interest</td>
+                        <td>
+                            <p>Please enter Longitude and Latitude Points to find out points of interest in this area.</p>
+                            <form action="" method="">
+                                <label for="lngPOI">Longitude:</label>
+                                <input type="number" id="selLngPOI" name="lngPOI"><br><br>
+                                <label for="latPOI">Latitude:</label>
+                                <input type="number" id="selLatPOI" name="latPOI"><br><br>
+                            </form>
+                            <td><button id="btnRunNearbyPOI">Submit</button></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3. Find Wikipedia Entries for an area</td>
+                        <td>
+                            <p>Please enter a Postal Code, Country Code (eg. GB, FR, US) and a radius to find out more information about this area.</p>
+                            <form action="" method="">
+                                <label for="postcode">Postcode:</label>
+                                <input type="text" id="selPostcode" name="postcode"><br><br>
+                                <label for="country">Country Code:</label>
+                                <input type="text" id="selCountry" name="country"><br><br>
+                                <label for="radius">Radius:</label>
+                                <input type="number" id="selRadius" name="radius"><br><br>
+                            </form>
+                            <td><button id="btnWiki">Submit</button></td>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+
+        </table>
+
+		<div id="divResults">
+			
+			<table>
+
+                <thead>
+                    <tr>
+                        <th>
+                            Weather
+                        </th>
+                        <th>&nbsp</th>
+                        <th>
+                            Points of Interest
+                        </th>
+                        <th>&nbsp</th>
+                        <th>
+                            Wikipedia Information
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            Clouds: 
+                        </td>
+                        <td id="clouds">   
+                        </td>
+
+                        <td>
+                            Name: 
+                        </td>
+                        <td id="poiName1"> 
+                        </td>
+
+
+
+                        <td>
+                            Summary: 
+                        </td>
+                        <td id="summary1"> 
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td>
+                            Temperature: 
+                        </td>
+                        <td id="temperature">	
+                        </td>
+                        
+                        <td>
+                            Type: 
+                        </td>
+                        <td id="poiType1">        
+                        </td>
+
+                        <td>
+                            Title: 
+                        </td>
+                        <td id="title1">    
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td>
+                            Humidity: 
+                        </td>
+                        <td id="humidity">
+                        </td>
+
+                        <td>
+                            Name: 
+                        </td>
+                        <td id="poiName2">   
+                        </td>
+
+                        <td>
+                            Wikipedia URL: 
+                        </td>
+                        <td id="wikipediaUrl1"> 
+                        </td>
+                        
+                    </tr>
+
+
+
+
+                    <tr>
+                        <td>
+                            Weather Station Name: 
+                        </td>
+                        <td id="stationName">
+                        </td>
+
+                        <td>
+                            Type:
+                        </td>
+                        <td id="poiType2">   
+                        </td>
+
+                        <td>
+                            Distance: 
+                        </td>
+                        <td id="distance1"> 
+                        </td>
+
+                    </tr>
+
+
+
+
+                    <tr>
+                        <td>
+                            Wind Direction:
+                        </td>
+                        <td id="windDirection">
+                        </td>
+
+                        <td>
+                            Name: 
+                        </td>
+                        <td id="poiName3">
+                        </td>
+
+                        <td>
+                            Summary: 
+                        </td>
+                        <td id="summary2">    
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr>
+                        <td>Wind Speed:</td>
+                        <td id="windSpeed">
+                        </td>
+
+                        <td>
+                            Type: 
+                        </td>
+                        <td id="poiType3">
+                            
+                        </td>
+
+                        <td>
+                            Title: 
+                        </td>
+                        <td id="title2"> 
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr>
+                        <td>Date & Time: </td>
+                        <td id="dateTime">
+                        </td>
+
+                        <td>
+                            Name: 
+                        </td>
+                        <td id="poiName4">
+                        </td>
+
+                        <td>
+                            Wikipedia URL: 
+                        </td>
+                        <td id="wikipediaUrl2"> 
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr>
+                        <td>Country Code:</td>
+                        <td id="countryCode">
+                        </td>
+
+                        <td>
+                            Type: 
+                        </td>
+                        <td id="poiType4">    
+                        </td>
+
+                        <td>Distance: </td>
+                        <td id="distance2">
+                        </td>
+                    </tr>
+
+                </tbody>
+
+			</table>
+
+		</div>
+
+		<script type="application/javascript" src="libs/js/jquery-2.2.3.mincopy.js"></script>
+		<script type="application/javascript" src="libs/js/script.js"></script>
+
+	</body>
+
+</html>
